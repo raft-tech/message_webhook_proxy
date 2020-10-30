@@ -1,6 +1,6 @@
-# Raft Mattermost Bot Proxy
+# Message Webhook Proxy
 
-A Mattermost proxy that is deployable as a [Docker]() container to Heroku
+A Mattermost proxy that is deployable as a [Docker](https://www.docker.com/) container to Heroku
 
 ## Setting up
 Before you start, you will need to complete a few tasks.
@@ -16,10 +16,10 @@ Create an `bot access token` and add the bot a team and channel before it will b
 The most challenging aspect is retrieving the `channel_id`. In order for the bot to be able to post messages you need the `channel_id` not `name`. To do so, use dev tools in browser and click on the `Members` button. In the network tab, you should be able to find a request similar to
 
 ```
-<mattermost_url>/api/v4/users?in_channel=1oy45tbdjpej5pftygr6be7k1c&page=0&per_page=100&sort=status
+<mattermost_url>/api/v4/users?in_channel=1oy45tbdjpej5pftygr5be7k1c&page=0&per_page=100&sort=status
 ```
 
-You are looking for the value for `in_channel`. In this case, `1oy45tbdjpej5pftygr6be7k1c`. (There are many other ways to do this, including some fancy API calls).
+You are looking for the value for `in_channel`. In this case, `1oy45tbdjpej5pftygr5be7k1c`. (There are many other ways to do this, including some fancy API calls).
 
 
 ## Running
@@ -27,8 +27,8 @@ You are looking for the value for `in_channel`. In this case, `1oy45tbdjpej5pfty
 ### Localhost
 ```sh
 #checkout code base
-git clone ...
-cd ...
+git clone https://github.com/raft-tech/message_webhook_proxy.git
+cd message_webhook_proxy
 
 # install dependencies
 npm install
@@ -48,14 +48,14 @@ curl localhost:3000/
 curl localhost:3000/post/channel/<channel_id>/msg/<message>
 ```
 
-#### Devlopment
-Running in development mode with [`nodemon`]() so that the server reloads on file changes.
+#### Development
+Running in development mode with [`nodemon`](https://www.npmjs.com/package/nodemon) so that the server reloads on file changes.
 ```sh
  npm run-script dev
 ```
 
 #### Testing
-Unit tests for the API endpoints is written in [`mocha`]() and levargaes the [`chai`]() and [`chaiHttp`]() node modules.
+Unit tests for the API endpoints is written in [`mocha`](https://mochajs.org/) and leverages the [`chai`](https://www.chaijs.com/) and [`chaiHttp`](https://www.chaijs.com/plugins/chai-http/) node modules.
 ```sh
 npm test
 ```
@@ -80,7 +80,7 @@ docker run -p 3000:3000 \
 ```sh
 # environment config
 REPO='registry.heroku.com'
-PROXY_APP_NAME='' # from heroku
+PROXY_APP_NAME='' # from Heroku
 
 # tag image
 docker tag $LOCAL_TAG registry.heroku.com/$PROXY_APP_NAME/web && \
