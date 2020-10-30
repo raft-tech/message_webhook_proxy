@@ -6,14 +6,14 @@ A Mattermost proxy that is deployable as a [Docker](https://www.docker.com/) con
 Before you start, you will need to complete a few tasks.
 
 ### Create a Bot
-Follow [Mattermost documentation](https://docs.mattermost.com/developer/bot-accounts.html#bot-account-creation) to cereate one.
+Follow [Mattermost documentation](https://docs.mattermost.com/developer/bot-accounts.html#bot-account-creation) to create one.
 
-### Create a Bot Acess Token
-Create an `bot access token` and add the bot a team and channel before it will be able to post messages. When you create a bot, you will see a `Token ID`. That is **NOT** what you are looking for. Click on `Create New Token` and type in a description. This will create an `Access Token` and a warning message urging you to copy it. That is the one you are looking for.
+### Create a Bot Access Token
+Create a `bot access token`. You will need to add the bot to a team and channel before it will be able to post messages. When you create a bot, you will see a `Token ID`. That is **NOT** what you are looking for. Click on `Create New Token` and type in a description. This will create an `Access Token` and a warning message urging you to copy it. That is the one you are looking for.
 
 
 ### Getting the channel_id
-The most challenging aspect is retrieving the `channel_id`. In order for the bot to be able to post messages you need the `channel_id` not `name`. To do so, use dev tools in browser and click on the `Members` button. In the network tab, you should be able to find a request similar to
+The most challenging aspect is retrieving the `channel_id`. In order for the bot to be able to post messages, you need the `channel_id` not `name`. To do so, use the dev tools in your browser and click on the `Members` button. In the network tab, you should be able to find a request similar to
 
 ```
 <mattermost_url>/api/v4/users?in_channel=1oy45tbdjpej5pftygr5be7k1c&page=0&per_page=100&sort=status
@@ -49,13 +49,13 @@ curl localhost:3000/post/channel/<channel_id>/msg/<message>
 ```
 
 #### Development
-Running in development mode with [`nodemon`](https://www.npmjs.com/package/nodemon) so that the server reloads on file changes.
+Run in development mode with [`nodemon`](https://www.npmjs.com/package/nodemon) so that the server reloads on file changes.
 ```sh
  npm run-script dev
 ```
 
 #### Testing
-Unit tests for the API endpoints is written in [`mocha`](https://mochajs.org/) and leverages the [`chai`](https://www.chaijs.com/) and [`chaiHttp`](https://www.chaijs.com/plugins/chai-http/) node modules.
+Unit tests for the API endpoints are written in [`mocha`](https://mochajs.org/) and leverage the [`chai`](https://www.chaijs.com/) and [`chaiHttp`](https://www.chaijs.com/plugins/chai-http/) node modules.
 ```sh
 npm test
 ```
