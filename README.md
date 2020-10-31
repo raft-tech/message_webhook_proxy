@@ -2,6 +2,8 @@
 
 A Mattermost proxy that is deployable as a [Docker](https://www.docker.com/) container to Heroku
 
+![message_proxy_diagram](diagrams/message_proxy_diagram.png)
+
 ## Setting up
 Before you start, you will need to complete a few tasks.
 
